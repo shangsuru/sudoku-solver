@@ -40,20 +40,20 @@ function solveSudoku(board) {
    let row = -1
    let col = -1
    // find empty spot
-   isEmpty = true
+   isEmpty = false
    for (let r = 0; r < 9; r++) {
        for (let c = 0; c < 9; c++) {
            if (board[r][c] === 0) {
                row = r
                col = c
-               isEmpty = false // still missing values
+               isEmpty = true // still missing values
                break
            }
        }
-    if (!isEmpty) break
+    if (isEmpty) break
    } 
    // no empty spaces left
-   if (isEmpty) return true
+   if (!isEmpty) return true
    // backtracking
    for (let num = 1; num <= 9; num++) {
        if (checkSudoku(board, row, col, num)) {
