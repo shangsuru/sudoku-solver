@@ -38,19 +38,20 @@ input:hover {
     background-color: #CCCCCC;
 }
 
-#solve {
+button {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: 0;
     margin-top: 10px;
     font-size: 30px;
-    width: 479px;
+    width: 239px;
 }
 
-#solve:hover {
+button:hover {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+/* set thicker boarders on the 3x3 squares*/
 #cell-0, #cell-1, #cell-2, #cell-3, #cell-4, #cell-5, #cell-6, #cell-7, #cell-8,
 #cell-27, #cell-28, #cell-29, #cell-30, #cell-31, #cell-32, #cell-33, #cell-34, #cell-35    ,
 #cell-54, #cell-55, #cell-56, #cell-57, #cell-58, #cell-59, #cell-60, #cell-61, #cell-62 {

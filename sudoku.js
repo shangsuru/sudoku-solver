@@ -1,3 +1,13 @@
+/**
+ * Checks if number can be inserted into the board at given position.
+ * 
+ * @param {int[][]} board two-dimensional array representing sudoku board
+ * @param {int} row row, to which number is written to
+ * @param {int} col col, to which number is written to
+ * @param {int} num number, which is written to board
+ * 
+ * @return {boolean} true, if no violations occur
+ */
 function checkSudoku(board, row, col, num) {
     // check row
     for (let c = 0; c < 9; c++) {
@@ -19,10 +29,16 @@ function checkSudoku(board, row, col, num) {
     return true
 }
 
+/**
+ * Computes the solution of the given sudoku and updates the board accordingly.
+ * 
+ * @param {int[][]} board two-dimensional array representing sudoku board
+ * 
+ * @return {boolean} true, if board is solvable
+ */
 function solveSudoku(board) {
    let row = -1
    let col = -1
-
    // find empty spot
    isEmpty = true
    for (let r = 0; r < 9; r++) {
@@ -36,10 +52,8 @@ function solveSudoku(board) {
        }
     if (!isEmpty) break
    } 
-
    // no empty spaces left
    if (isEmpty) return true
-
    // backtracking
    for (let num = 1; num <= 9; num++) {
        if (checkSudoku(board, row, col, num)) {
@@ -51,6 +65,12 @@ function solveSudoku(board) {
    return false // unsolvable
 }
 
+/**
+ * Generates two-dimensional array representing the sudoku board
+ * and updates its values with the input coming from the GUI.
+ * 
+ * @return {int[][]} representation of the sudoku board
+ */
 function loadBoard() {
     let board = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -74,6 +94,11 @@ function loadBoard() {
     return board
 }
 
+/**
+ * Updates the GUI representation of the board with given values.
+ * 
+ * @param {int[][]} board two-dimensional array representing the solution to the problem 
+ */
 function setBoard(board) {
     let inputs = document.querySelectorAll('input')
     for (let i = 0; i < inputs.length; i++) {
@@ -85,4 +110,11 @@ document.getElementById('solve').addEventListener('click', function() {
     let board = loadBoard()
     solveSudoku(board)
     setBoard(board)
+})
+
+document.getElementById('clear').addEventListener('click', function() {
+    let inputs = document.querySelectorAll('input')
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = ''
+    }
 })
