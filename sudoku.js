@@ -74,8 +74,15 @@ function loadBoard() {
     return board
 }
 
-// puzzle = loadBoard()
-// console.log(puzzle)
-// solveSudoku(puzzle)
-// console.log(puzzle)
+function setBoard(board) {
+    let inputs = document.querySelectorAll('input')
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = board[Math.floor(i / 9)][i % 9]
+    }
+}
 
+document.getElementById('solve').addEventListener('click', function() {
+    let board = loadBoard()
+    solveSudoku(board)
+    setBoard(board)
+})
