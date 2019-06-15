@@ -1,16 +1,3 @@
-
-let puzzle = [
-    [0, 0, 3, 0, 7, 0, 0, 0, 0],
-    [0, 5, 8, 0, 0, 3, 6, 0, 0],
-    [0, 6, 0, 4, 0, 0, 0, 9, 3],
-    [5, 0, 0, 0, 0, 0, 4, 0, 0],
-    [0, 4, 0, 5, 2, 9, 0, 7, 0],
-    [0, 0, 6, 0, 0, 0, 0, 0, 9],
-    [7, 2, 0, 0, 0, 5, 0, 3, 0],
-    [0, 0, 5, 3, 0, 0, 7, 2, 0],
-    [0, 0, 0, 0, 8, 0, 9, 0, 0]
-]
-
 function checkSudoku(board, row, col, num) {
     // check row
     for (let c = 0; c < 9; c++) {
@@ -64,7 +51,31 @@ function solveSudoku(board) {
    return false // unsolvable
 }
 
-console.log(puzzle)
-solveSudoku(puzzle)
-console.log(puzzle)
+function loadBoard() {
+    let board = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+
+    let inputs = document.querySelectorAll('input')
+    for (let i = 0; i < inputs.length; i++) {
+        let value = inputs[i].value
+        if (value !== '') {
+            board[Math.floor(i / 9)][i % 9] = parseInt(value)
+        }
+    }
+    return board
+}
+
+// puzzle = loadBoard()
+// console.log(puzzle)
+// solveSudoku(puzzle)
+// console.log(puzzle)
 
