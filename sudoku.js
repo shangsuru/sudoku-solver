@@ -10,7 +10,7 @@
  */
 function checkSudoku(board, row, col, num) {
     // check row and column
-    for (let i = 0; c < 9; c++) {
+    for (let i = 0; i < 9; i++) {
         if (board[row][i] === num || board[i][col] === num) return false
     }
     
