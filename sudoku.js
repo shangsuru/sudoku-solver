@@ -9,14 +9,11 @@
  * @return {boolean} true, if no violations occur
  */
 function checkSudoku(board, row, col, num) {
-    // check row
-    for (let c = 0; c < 9; c++) {
-        if (board[row][c] === num) return false
+    // check row and column
+    for (let i = 0; c < 9; c++) {
+        if (board[row][i] === num || board[i][col] === num) return false
     }
-    // check column
-    for (let r = 0; r < 9; r++) {
-        if (board[r][col] === num) return false
-    }
+    
     // check square
     let boxRowStart = Math.floor(row / 3) * 3
     let boxColStart = Math.floor(col / 3) * 3
